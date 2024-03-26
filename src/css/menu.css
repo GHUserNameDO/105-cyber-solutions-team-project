@@ -98,11 +98,11 @@
   color: #fbfbfb;
 }
 
-.menu-nav-link.active {
-  margin-bottom: 10px;
+.menu-nav-link.active::after {
+  opacity: 1;
 }
 
-.menu-nav-link.active::after {
+.menu-nav-link::after {
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -113,6 +113,14 @@
   width: 8px;
   height: 8px;
   background-color: #3350e9;
+  opacity: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-nav-link:hover::after,
+.menu-nav-link:focus::after,
+.menu-nav-link:active::after {
+  opacity: 1;
 }
 
 .menu-social-media-list {

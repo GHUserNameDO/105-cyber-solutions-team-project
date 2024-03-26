@@ -5,7 +5,8 @@
   padding-top: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid rgba(12, 12, 12, 0.1);
-  background-color: #fbfbfb;
+  backdrop-filter: blur(5px);
+  background-color: rgba(251, 251, 251, 0.87);
 }
 .header-container {
   display: flex;
@@ -71,10 +72,11 @@
     display: flex;
     gap: 40px;
   }
-  .active {
+  .header-menu-link {
     position: relative;
+    padding-bottom: 10px;
   }
-  .active::after {
+  .header-menu-link::after {
     display: block;
     content: '';
     border-radius: 50%;
@@ -85,9 +87,18 @@
     bottom: -2px;
     left: 50%;
     transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .header-menu-link {
-    padding-bottom: 10px;
+
+  .header-menu-link.active::after {
+    opacity: 1;
+  }
+
+  .header-menu-link:hover::after,
+  .header-menu-link:focus::after,
+  .header-menu-link:active::after {
+    opacity: 1;
   }
   .mobile-menu-open-btn,
   .mobile-menu-open-btn-icon {
@@ -100,34 +111,26 @@
     display: flex;
     gap: 10px;
   }
-  .header-social-item {
+
+  .header-social-item-link {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid rgba(12, 12, 12, 0.1);
-    border-radius: 10px;
     width: 36px;
     height: 36px;
     cursor: pointer;
-    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .header-social-item:hover,
-  .header-social-item:focus,
-  .header-social-item:active {
-    border: 1px solid rgba(51, 80, 233, 0.1);
-  }
-
-  .header-social-item a {
-    display: flex;
-    fill: #0c0c0c;
     opacity: 0.8;
+    border-radius: 10px;
+    border: 1px solid rgba(12, 12, 12, 0.1);
+    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    fill: #0c0c0c;
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .header-social-item:hover a,
-  .header-social-item:focus a,
-  .header-social-item:active a {
+  .header-social-item-link:hover,
+  .header-social-item-link:focus,
+  .header-social-item-link:active {
+    border: 1px solid rgba(51, 80, 233, 0.1);
     fill: #3350e9;
   }
 }
